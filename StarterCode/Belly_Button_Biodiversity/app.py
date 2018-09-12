@@ -65,19 +65,28 @@ def sample_metadata(sample):
     results = db.session.query(*sel).filter(Samples_Metadata.sample == sample).all()
 
     # Create a dictionary entry for each row of metadata information
-    sample_metadata = {}
+    # sample_metadata = {}
+    # for result in results:
+    #     sample_metadata["sample"] = result[0]
+    #     sample_metadata["ETHNICITY"] = result[1]
+    #     sample_metadata["GENDER"] = result[2]
+    #     sample_metadata["AGE"] = result[3]
+    #     sample_metadata["LOCATION"] = result[4]
+    #     sample_metadata["BBTYPE"] = result[5]
+    #     sample_metadata["WFREQ"] = result[6]
+    sample_metadata = []
     for result in results:
-        sample_metadata["sample"] = result[0]
-        sample_metadata["ETHNICITY"] = result[1]
-        sample_metadata["GENDER"] = result[2]
-        sample_metadata["AGE"] = result[3]
-        sample_metadata["LOCATION"] = result[4]
-        sample_metadata["BBTYPE"] = result[5]
-        sample_metadata["WFREQ"] = result[6]
+        sample_metadata.append(result[0])
+        sample_metadata.append(result[1])
+        sample_metadata.append(result[2])
+        sample_metadata.append(result[3])
+        sample_metadata.append(result[4])
+        sample_metadata.append(result[5])
+        sample_metadata.append(result[6])
 
     print(sample_metadata)
     return jsonify(sample_metadata)
-
+    
 
 @app.route("/samples/<sample>")
 def samples(sample):
