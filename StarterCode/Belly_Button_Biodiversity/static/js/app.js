@@ -37,6 +37,9 @@ function buildMetadata(sample) {
     console.log(extract)
     topTen = extract.slice(0,10) */
     // Define values
+    data.sort(function(obj1,obj2){
+      return obj1.sample_values - obj2.sample_values
+    });
     const otu_ids = data.otu_ids;
     const sample_values = data.sample_values;
     const otu_labels = data.otu_labels;
