@@ -37,9 +37,9 @@ function buildMetadata(sample) {
     console.log(extract)
     topTen = extract.slice(0,10) */
     // Define values
-    data.sort(function(obj1,obj2){
-      return obj1.sample_values - obj2.sample_values
-    });
+    //data.sort(function(obj1,obj2){
+    //  return obj1.sample_values - obj2.sample_values
+//});
     const otu_ids = data.otu_ids;
     const sample_values = data.sample_values;
     const otu_labels = data.otu_labels;
@@ -58,8 +58,8 @@ function buildMetadata(sample) {
     }];
   
     var layout = {
-      height: 400,
-      width: 500
+      height: 800,
+      width: 700
     };
     pieDiv = d3.select("#pie")
     //pieDiv.html("");
@@ -81,7 +81,7 @@ function buildMetadata(sample) {
       title: 'Belly Button BioDiversity',
       showlegend: true,
       height: 600,
-      width: 900
+      width: 1000
     }
 
     bubDiv = d3.select("#bubble")
@@ -101,6 +101,7 @@ function buildMetadata(sample) {
         .text(sample)
         .property("value", sample);
     });
+
     // Use the first sample from the list to build the initial plots
     const firstSample = sampleNames[0];
     buildCharts(firstSample);
